@@ -224,3 +224,4 @@ class TestBuyProductGorpoPytest:
                                                                   "div.address-fields-container > "
                                                                   "div.input-wrapper.invalid > div").text
         assert error_message == "Please enter an Email"
+

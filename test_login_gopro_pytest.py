@@ -8,13 +8,25 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.firefox.service import Service as FirefoxService
+
 
 
 class TestloginGoproPytest():
     def setup_method(self, method):
+        #chrome browser:
         chrome_driver_binary = r'.\drivers\chromedriver'
         self.driver = webdriver.Chrome(chrome_driver_binary)
-        self.vars = {}
+
+
+        #firefox browser:
+        # firefox_driver_binary = "./drivers/geckodriver"
+        # ser_firefox = FirefoxService(firefox_driver_binary)
+        # self.driver = webdriver.Firefox(service=ser_firefox)
+
+        # firefox edge:
+        # edge_driver_binary = "./drivers/msedgedriver"
+        # self.driver=webdriver.Edge(edge_driver_binary)
 
     def teardown_method(self, method):
         self.driver.quit()
@@ -225,9 +237,9 @@ class TestloginGoproPytest():
         except:
             pass
         time.sleep(20)
-        create_account_btn = self.driver.find_element(By.CSS_SELECTOR,
-                                                      "body > main > div > div.app-container > "
-                                                      "div.gp-signup-finish.gp-login-container.container > div > div "
-                                                      "> form > div.form-input-wrapper > button")
-        time.sleep(10)
-        assert create_account_btn.is_enabled()
+
+        self.driver.get("https://gopro.com/login")
+        assert self.driver.current_url=="https://gopro.com/login"
+        # create_account_btn= self.driver.find_element(By.CSS_SELECTOR,"body > main > div > div.app-container > div.gp-signup-finish.gp-login-container.container > div > div > form > div.form-input-wrapper > button")
+        # time.sleep(20)
+        # assert create_account_btn.is_enabled()
