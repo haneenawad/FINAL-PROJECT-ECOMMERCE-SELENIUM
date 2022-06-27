@@ -169,6 +169,73 @@ class TestTabletPytest:
                        create_account_btn.is_enabled()]
         assert validation in errors_list
 
+    def test_create_account(self):
+        self.driver.get("https://gopro.com/en/us/")
+        self.driver.find_element(By.CSS_SELECTOR, ".icon-product-menu").click()
+        self.driver.execute_script(
+            "document.querySelector('.MenuMobile_preHeaderItems__IwY_9 > div:nth-child(4) > a:nth-child(1)').scrollIntoView();")
+        time.sleep(7)
+        self.driver.find_element(By.LINK_TEXT, "Account").click()
+        self.driver.execute_script(
+            "document.querySelector('body > main > div > div.app-container > div.gp-slider > div > div:nth-child(1) > div > div > div > div:nth-child(4) > div > div.social.login.ecomm-subscriber > p:nth-child(3) > a').scrollIntoView();")
+        self.driver.find_element(By.CSS_SELECTOR, ".login .btn-google > .btn-text").click()
+        time.sleep(5)
+        self.driver.execute_script("window.scrollTo(0,0)")
+        time.sleep(5)
+        self.driver.find_element(By.ID, "identifierId").send_keys("testerhaneen@gmail.com")
+        # self.driver.find_element(By.CSS_SELECTOR, ".VfPpkd-LgbsSe-OWXEXe-k8QpJ > .VfPpkd-RLmnJb").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".VfPpkd-LgbsSe-OWXEXe-k8QpJ > .VfPpkd-vQzf8d").click()
+        time.sleep(5)
+        self.driver.find_element(By.NAME, "password").send_keys("Hha12345")
+        time.sleep(3)
+        self.driver.find_element(By.CSS_SELECTOR, ".VfPpkd-LgbsSe-OWXEXe-k8QpJ > .VfPpkd-vQzf8d").click()
+        time.sleep(5)
+        try:
+            self.driver.execute_script(
+                "document.querySelector('body > main > div > div.app-container > div.gp-slider > div > div:nth-child(1) > div > div > div > div:nth-child(4) > div > div.social.login.ecomm-subscriber > p:nth-child(3) > a').scrollIntoView();")
+            self.driver.find_element(By.CSS_SELECTOR, ".login .btn-google > .btn-text").click()
+            time.sleep(5)
+            self.driver.execute_script("window.scrollTo(0,0)")
+            time.sleep(5)
+            self.driver.find_element(By.ID, "identifierId").send_keys("testerhaneen@gmail.com")
+            # self.driver.find_element(By.CSS_SELECTOR, ".VfPpkd-LgbsSe-OWXEXe-k8QpJ > .VfPpkd-RLmnJb").click()
+            self.driver.find_element(By.CSS_SELECTOR, ".VfPpkd-LgbsSe-OWXEXe-k8QpJ > .VfPpkd-vQzf8d").click()
+            time.sleep(5)
+            self.driver.find_element(By.NAME, "password").send_keys("Hha12345")
+            time.sleep(3)
+            self.driver.find_element(By.CSS_SELECTOR, ".VfPpkd-LgbsSe-OWXEXe-k8QpJ > .VfPpkd-vQzf8d").click()
+            time.sleep(5)
+        except:
+            pass
+        self.driver.find_element(By.NAME, "password").click()
+        time.sleep(5)
+        self.driver.find_element(By.NAME, "password").send_keys("Hha12345")
+        time.sleep(5)
+        self.driver.execute_script(
+            "document.querySelector('body > main > div > div.app-container > div.gp-signup-finish.gp-login-container.container > div > div > form > div:nth-child(2) > div:nth-child(5) > input').scrollIntoView();")
+        self.driver.find_element(By.NAME, "confirmPassword").click()
+        time.sleep(5)
+        self.driver.find_element(By.NAME, "confirmPassword").send_keys("Hha12345")
+        time.sleep(5)
+        self.driver.execute_script(
+            "document.querySelector('.gp-form-row:nth-child(3) > .gp-checkbox > label').scrollIntoView();")
+        self.driver.find_element(By.CSS_SELECTOR, ".gp-form-row:nth-child(3) > .gp-checkbox > label").click()
+        time.sleep(5)
+        self.driver.switch_to.frame(0)
+        self.driver.execute_script(
+            "document.querySelector('.recaptcha-checkbox-border').scrollIntoView();")
+        self.driver.find_element(By.CSS_SELECTOR, ".recaptcha-checkbox-border").click()
+        time.sleep(10)
+        self.driver.get("https://gopro.com/login")
+        assert self.driver.current_url == "https://gopro.com/login"
+        # self.driver.execute_script(
+        #     "document.querySelector('body > main > div > div.app-container > div.gp-signup-finish.gp-login-container.container > div > div > form > div.form-input-wrapper > button').scrollIntoView();")
+        # create_account_btn = self.driver.find_element(By.CSS_SELECTOR,
+        #                                               "body > main > div > div.app-container > div.gp-signup-finish.gp-login-container.container > div > div > form > div.form-input-wrapper > button")
+        # time.sleep(10)
+        # assert create_account_btn.is_enabled()
+
+
     def test_search_product_gopro(self):
         self.driver.get("https://gopro.com/en/us/")
         self.driver.find_element(By.CSS_SELECTOR, ".icon-product-menu").click()
