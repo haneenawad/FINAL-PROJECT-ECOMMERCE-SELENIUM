@@ -15,8 +15,8 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 class TestloginGoproPytest():
     def setup_method(self, method):
         #chrome browser:
-        chrome_driver_binary = r'.\drivers\chromedriver'
-        self.driver = webdriver.Chrome(chrome_driver_binary)
+        # chrome_driver_binary = r'.\drivers\chromedriver'
+        # self.driver = webdriver.Chrome(chrome_driver_binary)
 
 
         #firefox browser:
@@ -27,14 +27,14 @@ class TestloginGoproPytest():
         # edge browser:
         # edge_driver_binary = "./drivers/msedgedriver"
         # self.driver=webdriver.Edge(edge_driver_binary)
-        # dc = {
-        #     "browserName": "chrome",
-        #     "platformName": "WINDOWS10"
-        # }
-        #
+        dc = {
+            "browserName": "firefox",
+            "platformName": "Windows 10"
+        }
+
 
         # # selenium grid standAlone
-        # self.driver = webdriver.Remote("http://localhost:4444",dc)
+        self.driver = webdriver.Remote("http://localhost:4444",dc)
 
     def teardown_method(self, method):
         self.driver.quit()
