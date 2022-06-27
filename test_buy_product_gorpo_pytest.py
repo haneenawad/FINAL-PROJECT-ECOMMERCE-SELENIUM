@@ -21,7 +21,7 @@ class TestBuyProductGorpoPytest:
         # ser_firefox = FirefoxService(firefox_driver_binary)
         # self.driver = webdriver.Firefox(service=ser_firefox)
 
-        # firefox edge:
+        # edge browser:
         # edge_driver_binary = "./drivers/msedgedriver"
         # self.driver=webdriver.Edge(edge_driver_binary)
 
@@ -30,7 +30,6 @@ class TestBuyProductGorpoPytest:
 
     def test_buy_product_gorpo(self):
         self.driver.get("https://gopro.com/en/us/en")
-        self.driver.set_window_size(1050, 660)
         self.driver.switch_to.frame(0)
         time.sleep(10)
         self.driver.find_element(By.LINK_TEXT, "Account").click()
@@ -38,15 +37,18 @@ class TestBuyProductGorpoPytest:
         time.sleep(10)
         self.driver.find_element(By.NAME, "loginEmail").click()
         time.sleep(10)
-        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna12345@gmail.com")
+        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna123456@gmail.com")
         time.sleep(30)
         self.driver.find_element(By.NAME, "loginPassword").click()
         time.sleep(10)
-        self.driver.find_element(By.NAME, "loginPassword").send_keys("Hha12345")
-        time.sleep(20)
+        self.driver.find_element(By.NAME, "loginPassword").send_keys("Haneen12345")
+        time.sleep(10)
         # self.driver.switch_to.frame(0)
         # self.driver.find_element(By.CSS_SELECTOR, ".recaptcha-checkbox-border").click()
         # self.driver.switch_to.default_content()
+        self.driver.execute_script(
+            "document.getElementById('gptest-login-btn').scrollIntoView();")
+        time.sleep(5)
         self.driver.find_element(By.ID, "gptest-login-btn").click()
         time.sleep(20)
         self.driver.find_element(By.LINK_TEXT, "Cameras").click()
@@ -77,21 +79,25 @@ class TestBuyProductGorpoPytest:
 
     def test_buy_product_gorpo2(self):
         self.driver.get("https://gopro.com/en/us/")
-        self.driver.set_window_size(1292, 692)
-        time.sleep(10)
+        time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Account").click()
         time.sleep(10)
         self.driver.find_element(By.NAME, "loginEmail").click()
-        time.sleep(10)
-        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna12345@gmail.com")
-        time.sleep(40)
+        time.sleep(5)
+        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna123456@gmail.com")
+        time.sleep(5)
+        self.driver.execute_script(
+            "document.querySelector('body > main > div > div.app-container > div.gp-slider > div > div:nth-child(1) > div > div > div > form > div:nth-child(3) > input').scrollIntoView();")
         self.driver.find_element(By.NAME, "loginPassword").click()
-        time.sleep(10)
-        self.driver.find_element(By.NAME, "loginPassword").send_keys("Hha12345")
+        time.sleep(5)
+        self.driver.find_element(By.NAME, "loginPassword").send_keys("Haneen12345")
         # self.driver.switch_to.frame(0)
         # self.driver.find_element(By.CSS_SELECTOR, ".recaptcha-checkbox-border").click()
         # self.driver.switch_to.default_content()
         time.sleep(10)
+        self.driver.execute_script(
+            "document.getElementById('gptest-login-btn').scrollIntoView();")
+        time.sleep(7)
         self.driver.find_element(By.ID, "gptest-login-btn").click()
         time.sleep(10)
         self.driver.find_element(By.LINK_TEXT, "Cameras").click()
@@ -169,7 +175,6 @@ class TestBuyProductGorpoPytest:
 
     def test_buy_product_gopro_without_account(self):
         self.driver.get("https://gopro.com/en/us/en")
-        self.driver.set_window_size(1050, 660)
         self.driver.switch_to.frame(0)
         time.sleep(10)
         self.driver.find_element(By.LINK_TEXT, "Cameras").click()

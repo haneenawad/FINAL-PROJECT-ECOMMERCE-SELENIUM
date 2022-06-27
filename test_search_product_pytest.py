@@ -22,7 +22,7 @@ class TestSearchProduct:
         # ser_firefox = FirefoxService(firefox_driver_binary)
         # self.driver = webdriver.Firefox(service=ser_firefox)
 
-        # firefox edge:
+        # edge browser:
         # edge_driver_binary = "./drivers/msedgedriver"
         # self.driver=webdriver.Edge(edge_driver_binary)
 
@@ -31,18 +31,10 @@ class TestSearchProduct:
 
     def test_search_product_gopro(self):
         self.driver.get("https://gopro.com/en/us/en")
-        self.driver.set_window_size(1292, 692)
         self.driver.switch_to.frame(0)
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Cameras").click()
         time.sleep(7)
-        self.driver.switch_to.default_content()
-        element = self.driver.find_element(By.LINK_TEXT, "Cameras")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(self.driver)
-        # actions.move_to_element(element, 0, 0).perform()
         self.driver.execute_script("window.scrollTo(0,28)")
         self.driver.find_element(By.CSS_SELECTOR,
                                  ".clp_content_clp-main___LY4Y:nth-child(2) .PromotionBox_promotionalMessage__QnQkA").click()
@@ -61,12 +53,6 @@ class TestSearchProduct:
         self.driver.find_element(By.ID, "search-box").send_keys(Keys.ENTER)
         time.sleep(5)
         element = self.driver.find_element(By.CSS_SELECTOR, ".CategoryMenu_ico__1mvB9 > .icon-product-search")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(self.driver)
-        # actions.move_to_element(element, 0, 0).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, ".Ratings_starLarge__CfnzO:nth-child(6) > svg")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         time.sleep(5)

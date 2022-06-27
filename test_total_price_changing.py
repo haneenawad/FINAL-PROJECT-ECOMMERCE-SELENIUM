@@ -21,7 +21,7 @@ class TestTotalPriceChangingPytest():
         # ser_firefox = FirefoxService(firefox_driver_binary)
         # self.driver = webdriver.Firefox(service=ser_firefox)
 
-        # firefox edge:
+        # edge browser:
         # edge_driver_binary = "./drivers/msedgedriver"
         # self.driver=webdriver.Edge(edge_driver_binary)
 
@@ -30,18 +30,20 @@ class TestTotalPriceChangingPytest():
 
     def test_total_price_changing_gopro(self):
         self.driver.get("https://gopro.com/en/us/")
-        self.driver.set_window_size(1292, 692)
         time.sleep(10)
         self.driver.find_element(By.LINK_TEXT, "Account").click()
         time.sleep(10)
         self.driver.find_element(By.NAME, "loginEmail").click()
         time.sleep(10)
-        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna12345@gmail.com")
+        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna123456@gmail.com")
         time.sleep(30)
         self.driver.find_element(By.NAME, "loginPassword").click()
         time.sleep(10)
-        self.driver.find_element(By.NAME, "loginPassword").send_keys("Hha12345")
-        time.sleep(20)
+        self.driver.find_element(By.NAME, "loginPassword").send_keys("Haneen12345")
+        time.sleep(10)
+        self.driver.execute_script(
+            "document.getElementById('gptest-login-btn').scrollIntoView();")
+        time.sleep(7)
         self.driver.find_element(By.ID, "gptest-login-btn").click()
         time.sleep(10)
         self.driver.find_element(By.LINK_TEXT, "Cameras").click()

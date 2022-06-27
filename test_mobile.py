@@ -39,17 +39,22 @@ class TestMobilePytest:
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Account").click()
         self.driver.find_element(By.NAME, "loginEmail").click()
-        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna12345@gmail.com")
+        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna123456@gmail.com")
         self.driver.find_element(By.NAME, "loginPassword").click()
-        self.driver.find_element(By.NAME, "loginPassword").send_keys("Hha12345")
+        self.driver.find_element(By.NAME, "loginPassword").send_keys("Haneen12345")
         time.sleep(5)
         self.driver.find_element(By.ID, "gptest-login-btn").click()
         time.sleep(3)
         self.driver.find_element(By.CSS_SELECTOR, ".icon-product-menu").click()
         time.sleep(3)
+        self.driver.execute_script(
+            "document.querySelector('.MenuMobile_preHeaderItems__IwY_9 > .GenericItemController_itemContainer__h3uI_:nth-child(4) .icon').scrollIntoView();")
+        time.sleep(5)
         self.driver.find_element(By.CSS_SELECTOR,
                                  ".MenuMobile_preHeaderItems__IwY_9 > .GenericItemController_itemContainer__h3uI_:nth-child(4) .icon").click()
         time.sleep(3)
+        self.driver.execute_script(
+            "document.querySelector('#header > div.Header_mobileMenu__BBFeS.Header_menuOpen__cZfOE > div.MenuMobile_preHeaderItems__IwY_9 > div:nth-child(4) > div > ul > li:nth-child(5) > a').scrollIntoView();")
         assert self.driver.find_element(By.CSS_SELECTOR,
                                         "#header > div.Header_mobileMenu__BBFeS.Header_menuOpen__cZfOE > div.MenuMobile_preHeaderItems__IwY_9 > div:nth-child(4) > div > ul > li:nth-child(5) > a").text == "Sign Out"
 
@@ -266,7 +271,7 @@ class TestMobilePytest:
             "1)').scrollIntoView();")
         self.driver.find_element(By.LINK_TEXT, "Account").click()
         self.driver.find_element(By.NAME, "loginEmail").click()
-        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneenawadd12345@gmail.com")
+        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna123456@gmail.com")
         self.driver.find_element(By.NAME, "loginPassword").click()
         self.driver.find_element(By.NAME, "loginPassword").send_keys("Haneen12345")
         time.sleep(10)
@@ -408,7 +413,7 @@ class TestMobilePytest:
         self.driver.find_element(By.LINK_TEXT, "Account").click()
         self.driver.find_element(By.NAME, "loginEmail").click()
         time.sleep(5)
-        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneenawadd12345@gmail.com")
+        self.driver.find_element(By.NAME, "loginEmail").send_keys("haneennna123456@gmail.com")
         self.driver.find_element(By.NAME, "loginPassword").click()
         time.sleep(5)
         self.driver.find_element(By.NAME, "loginPassword").send_keys("Haneen12345")
@@ -444,7 +449,7 @@ class TestMobilePytest:
         self.driver.execute_script("window.scrollTo(0,444)")
         str_current_total_price = current_total_price.replace(",", "")
         float_current_total_price = float(str_current_total_price[1:])
-        float_total_price_changing = float_current_total_price + 499.99
+        float_total_price_changing = float_current_total_price + 549.98
         expected_total_price = f"${float_total_price_changing}"
 
         total_price_changing = self.driver.find_element(By.CSS_SELECTOR,
