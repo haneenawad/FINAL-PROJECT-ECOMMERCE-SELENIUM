@@ -12,9 +12,18 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class TestTotalPriceChangingPytest():
     def setup_method(self, method):
+        # chrome browser:
         chrome_driver_binary = r'.\drivers\chromedriver'
         self.driver = webdriver.Chrome(chrome_driver_binary)
-        self.vars = {}
+
+        # firefox browser:
+        # firefox_driver_binary = "./drivers/geckodriver"
+        # ser_firefox = FirefoxService(firefox_driver_binary)
+        # self.driver = webdriver.Firefox(service=ser_firefox)
+
+        # firefox edge:
+        # edge_driver_binary = "./drivers/msedgedriver"
+        # self.driver=webdriver.Edge(edge_driver_binary)
 
     def teardown_method(self, method):
         self.driver.quit()
